@@ -9,7 +9,7 @@ namespace ClosestPrime.Models
     public class NumberInput
     {
         [Required]
-        [ValidInputNumber(ErrorMessage = "You must enter a number less than 179424692")]
+        [ValidInputNumber]
         public int Input { get; set; }
     }
 

@@ -1,0 +1,15 @@
+﻿@model ClosestPrime.Models.ClosestPrimeMapping
+
+@{
+    ViewData["Title"] = "Checknumber";
+}
+
+<div>
+    <p>The closest prime to @Model.Number is @Model.ClosestPrime </p>
+    <p>The distance between number and prime is
+    @{ 
+        var diff = Math.Abs(Model.Number - Model.ClosestPrime);
+        <span>@diff</span>
+    }
+    </p>
+</div>
