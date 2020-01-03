@@ -19,10 +19,12 @@ namespace ClosestPrime.Controllers
         public IActionResult Checknumber(NumberInput number)
         {
             if (!ModelState.IsValid)
-                ModelState.AddModelError(nameof(NumberInput),
-                    "The input has to be a 'number' less than 179424692.");
+            {
+                ModelState.AddModelError(nameof(NumberInput), "The input has to be a 'number' less than 179424692.");
+                return View("Index");
+            }
             var closestPrime = GetClosestPrime(number.Input);
-            var primeMapping = new ClosestPrimeMapping(number.Input, closestPrime);
+            var primeMapping = new ClosestPrimeMapping(number.Input, closestPrime);          
             return View(primeMapping);
         }
 

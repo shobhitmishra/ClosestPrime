@@ -6,10 +6,12 @@
 
 <div>
     <p>The closest prime to @Model.Number is @Model.ClosestPrime </p>
-    <p>The distance between number and prime is
-    @{ 
-        var diff = Math.Abs(Model.Number - Model.ClosestPrime);
-        <span>@diff</span>
-    }
+    <p>
+        The distance between number and prime is
+        @{
+            var diff = Math.Abs(Model.Number - Model.ClosestPrime);
+            <span>@diff</span>
+        }
     </p>
 </div>
+<input type="button" value="Try Again" onclick="location.href='@Url.Action("Index", "Home")'" />
