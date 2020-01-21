@@ -36,8 +36,6 @@ namespace ClosestPrimeWebApi
             }
 
             app.UseFileServer();
-            //app.UseDefaultFiles();
-            //app.UseStaticFiles();
 
             app.UseRouting();
 
