@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Closest Prime</title>
+    <link rel="stylesheet" asp-append-version="true" href="/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" asp-append-version="true" href="/css/site.css" />
+</head>
+<body>
+    <script src="js/site.js" asp-append-version="true"></script>
+    <!--<h1>Closest Prime</h1>-->
+    <form action="javascript:void(0);" method="POST" onsubmit="getClosestPrime()">
+        <div class="form-group" align="center">
+            <div class="col-auto">
+                <label for="input-number">Enter Number</label>
+                <div class="w-50">
+                    <input type="number" class="form-control" id="input-number" min="0" max="179424691" />
+                </div>
+                <input class="btn btn-primary m-2" type="submit" value="Submit">
+            </div>
+        </div>
+    </form>
+
+    <div id="prime-message"></div>
+
+    <!--<form action="javascript:void(0);" method="POST" onsubmit="addItem()">
+        <input type="text" id="add-name" placeholder="New to-do">
+        <input type="submit" value="Add">
+    </form>-->
+    <!--<div id="editForm">
+        <h3>Edit</h3>
+        <form action="javascript:void(0);" onsubmit="updateItem()">
+            <input type="hidden" id="edit-id">
+            <input type="checkbox" id="edit-isComplete">
+            <input type="text" id="edit-name">
+            <input type="submit" value="Save">
+            <a onclick="closeInput()" aria-label="Close">&#10006;</a>
+        </form>
+    </div>
+
+    <p id="counter"></p>
+
+    <table>
+        <tr>
+
+            <th>Is Complete?</th>
+            <th>Name</th>
+            <th></th>
+            <th></th>
+        </tr>
+        <tbody id="todos"></tbody>
+    </table>
+
+    <script src="js/site.js" asp-append-version="true"></script>
+    <script type="text/javascript">
+        getItems();
+    </script>-->
+</body>
+</html>
