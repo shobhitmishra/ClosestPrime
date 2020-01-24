@@ -12,13 +12,13 @@ function getClosestPrime() {
         body: number
     })
         .then(response => response.json())
-        .then((closestPrime) => _displayClosestPrime(number, closestPrime))
+        .then((numberEntity) => _displayClosestPrime(number, numberEntity))
         .catch(error => console.error('Unable to get prime.', error));
 }
 
-function _displayClosestPrime(number, closestPrime) {
+function _displayClosestPrime(number, numberEntity) {
     const messageElement = document.getElementById('prime-message');
-    var message = `Closest prime to ${number} is ${closestPrime}.`
+    var message = `Closest prime to ${number} is ${numberEntity.rowKey}. It has been entered ${numberEntity.count} times.`
     messageElement.innerHTML = `<p>${message}</p>`
 }
 

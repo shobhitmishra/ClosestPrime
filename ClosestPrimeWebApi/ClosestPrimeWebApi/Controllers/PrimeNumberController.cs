@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ClosestPrimeWebApi.Models;
+using ClosestPrimeWebApi.Models.StorageProvider;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -13,6 +14,12 @@ namespace ClosestPrimeWebApi.Controllers
     [Route("api/[controller]")]
     public class PrimeNumberController : Controller
     {
+        IStorageProvider storageProvider;
+        public PrimeNumberController(IStorageProvider _storageProvider)
+        {
+            storageProvider = _storageProvider;
+        }
+
         private int GetClosestPrime(int number)
         {
             var primes = PrimeNumberRepository.Primes;
@@ -29,6 +36,7 @@ namespace ClosestPrimeWebApi.Controllers
             }
         }
 
+        // Leave this method to do local testing.
         // GET: api/<controller>
         [HttpGet]
         public IEnumerable<string> Get()
@@ -36,14 +44,18 @@ namespace ClosestPrimeWebApi.Controllers
             return new string[] { "value1", "value2" };
         }
 
-        
 
-        // POST api/<controller>
+        /// <summary>
+        /// Takes an integer <= 179424691 and returns the closest (bigger or smaller) prime number. 
+        /// </summary>
+        /// <param name="number">Input number. Comes from the form</param>
+        /// <returns>The prime number closest to the given number.</returns>
         [HttpPost]
-        public int Post([FromBody]int number)
+        public async Task<NumberEntity> Post([FromBody]int number)
         {
-            var closestPrime = GetClosestPrime(number);            
-            return closestPrime;
+            var closestPrime = GetClosestPrime(number);
+            var numEntity = await storageProvider.AddNumberEntityToTable(number, closestPrime);
+            return numEntity;
         }
         
         // GET api/<controller>/5
