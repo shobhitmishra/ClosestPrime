@@ -18,7 +18,7 @@ function getClosestPrime() {
 
 function _displayClosestPrime(number, numberEntity) {
     const messageElement = document.getElementById('prime-message');
-    var message = `Closest prime to ${number} is ${numberEntity.rowKey}. It has been entered ${numberEntity.count} times.`
-    messageElement.innerHTML = `<p>${message}</p>`
+    var message = `Closest prime to ${number} is ${numberEntity.rowKey}. It has been entered ${numberEntity.count} time(s).`
+    messageElement.innerHTML = `<center><p><h1>${message}</p>`
 }
 
