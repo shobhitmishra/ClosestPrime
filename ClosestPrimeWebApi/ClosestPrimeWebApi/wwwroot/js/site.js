@@ -18,7 +18,25 @@ function getClosestPrime() {
 
 function _displayClosestPrime(number, numberEntity) {
     const messageElement = document.getElementById('prime-message');
-    var message = `Closest prime to ${number} is ${numberEntity.rowKey}. It has been entered ${numberEntity.count} time(s).`
+    
+
+    
+    var message = `Closest prime to ${number} is ${numberEntity.rowKey}. It has been entered ${numberEntity.count} time(s).` 
     messageElement.innerHTML = `<center><p><h1>${message}</p>`
+
+    if (number==numberEntity.rowKey) 
+    {
+        message = `Bingo! Number entered ${number} is a prime number!. It has been entered ${numberEntity.count} time(s).`
+	} else {
+      if (number>numberEntity.rowKey) {
+          message = `See! Your number ${number} is not too far from the nearest prime number ${numberEntity.rowKey}. <br> Difference is merely ${number - numberEntity.rowKey}.   It has been entered ${numberEntity.count} time(s).`        
+	  }
+      else {
+          message = `See! Your number ${number} is not too far from the nearest prime number ${numberEntity.rowKey}. <br> Difference is merely ${numberEntity.rowKey - number}.   It has been entered ${numberEntity.count} time(s).`    
+
+	  }
+	}
+        messageElement.innerHTML = `<center><p><h1>${message}</p>`
+    
 }
 
