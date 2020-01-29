@@ -5,13 +5,40 @@
     <title>Closest Prime</title>
     <link rel="stylesheet" asp-append-version="true" href="/lib/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" asp-append-version="true" href="/css/site.css" />
+    <style>
+        body {
+          background-color: #fffbd8;
+
+
+        }
+
+        h1 {
+          background-color: #80ced6;
+        }
+
+        div {
+          background-color: #d5f4e6;
+        }
+
+        span {
+          background-color: #f18973;
+        }
+    </style>
 </head>
 <body>
     <script src="js/site.js" asp-append-version="true"></script>    
     <form action="javascript:void(0);" method="POST" onsubmit="getClosestPrime()">
         <div class="form-group" align="center">
             <div class="col-auto">
-                <label for="input-number">Enter Number</label>
+<h4><table><tr><td>
+Anytime you think of a number, it could be a prime number before you even realize it. 
+</td></tr><tr><td>
+You may have heard that prime numbers are not so common. This project breaks that myth.
+</td></tr><tr><td>
+How? Well, pick a random number, you would see that either it is a prime number, or not too far from it.
+</td></tr></table>
+                </h4>
+                <label for="input-number"><h1>Enter a number less than or equal to 179424691</label>
                 <div class="w-50">
                     <input type="number" class="form-control" id="input-number" min="0" max="179424691" />
                 </div>
