@@ -1,23 +1,35 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace ClosestPrimeWebApi.Models
 {
-    public class NumberEntity
+    public class MaxDifferenceEntity
     {
-        public NumberEntity(int num, int prime)
+        public static string IdAndPartitionString = "MaxDifference";
+
+        public MaxDifferenceEntity(int number, int prime)
         {
-            Number = num;
+            Number = number;
             MatchedPrime = prime;
-            Id = num.ToString(CultureInfo.InvariantCulture);
             TimeStamps ??= new List<DateTime>() { DateTime.UtcNow };
             Count = 1;
         }
 
+        public string PartitionKey = IdAndPartitionString;
+
         [JsonProperty(PropertyName = "id")]
-        public string Id { get; set; }
+        public string Id = IdAndPartitionString;
+
+        public int Difference
+        {
+            get
+            {
+                return Math.Abs(Number - MatchedPrime);
+            }
+        }
         public int Number { get; set; }
         public int MatchedPrime { get; set; }
         public List<DateTime> TimeStamps { get; set; }
@@ -30,3 +42,4 @@ namespace ClosestPrimeWebApi.Models
         }
     }
 }
+

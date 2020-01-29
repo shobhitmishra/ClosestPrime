@@ -36,12 +36,12 @@ namespace ClosestPrimeWebApi.Controllers
             }
         }
 
-        // Leave this method to do local testing.
+        // Returns the Maximum difference so far.
         // GET: api/<controller>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<MaxDifferenceEntity> Get()
         {
-            return new string[] { "value1", "value2" };
+            return await storageProvider.GetMaxDifferenceEntity();
         }
 
 

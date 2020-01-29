@@ -28,7 +28,7 @@ namespace ClosestPrimeWebApi
             services.AddControllers();
 
             // Add storage dependency
-            services.AddSingleton<IStorageProvider, TableStorageProvider>();
+            services.AddSingleton<IStorageProvider, CosmosDbStorageProvider>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -39,6 +39,7 @@ namespace ClosestPrimeWebApi
                 app.UseDeveloperExceptionPage();
             }
 
+            // allows us to use the index.html and other static files defined in the wwwroot folder. 
             app.UseFileServer();
 
             app.UseRouting();

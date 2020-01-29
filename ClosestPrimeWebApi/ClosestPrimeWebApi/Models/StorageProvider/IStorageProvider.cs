@@ -9,5 +9,6 @@ namespace ClosestPrimeWebApi.Models.StorageProvider
     {
         public Task<NumberEntity> AddNumberEntityToTable(int number, int prime);
         public Task<NumberEntity> GetNumberEntity(int number, int prime);
+        public Task<MaxDifferenceEntity> GetMaxDifferenceEntity();
     }
 }
