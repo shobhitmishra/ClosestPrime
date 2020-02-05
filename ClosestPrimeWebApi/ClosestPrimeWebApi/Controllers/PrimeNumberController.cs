@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using ClosestPrimeWebApi.Models;
 using ClosestPrimeWebApi.Models.StorageProvider;
@@ -36,7 +34,20 @@ namespace ClosestPrimeWebApi.Controllers
             }
         }
 
+        /// <summary>
+        /// Gets all the nuber entities in the sorage.
+        /// Can be called as GET http://localhost:57655/api/PrimeNumber/getall for local testing
+        /// </summary>
+        /// <returns></returns>
+        [Route("[action]")]
+        [HttpGet]
+        public async Task<List<NumberEntity>> GetAll()
+        {
+            return await storageProvider.GetAllNumberEntities();
+        }
+
         // Returns the Maximum difference so far.
+        // can be called as GET http://localhost:57655/api/PrimeNumber
         // GET: api/<controller>
         [HttpGet]
         public async Task<MaxDifferenceEntity> Get()
@@ -44,9 +55,9 @@ namespace ClosestPrimeWebApi.Controllers
             return await storageProvider.GetMaxDifferenceEntity();
         }
 
-
         /// <summary>
         /// Takes an integer <= 179424691 and returns the closest (bigger or smaller) prime number. 
+        /// Can be called as POST http://localhost:57655/api/PrimeNumber with body 15
         /// </summary>
         /// <param name="number">Input number. Comes from the form</param>
         /// <returns>The prime number closest to the given number.</returns>

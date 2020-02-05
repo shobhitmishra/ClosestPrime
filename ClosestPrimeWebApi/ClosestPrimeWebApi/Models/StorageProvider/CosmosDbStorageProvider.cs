@@ -1,7 +1,5 @@
 ﻿using Microsoft.Azure.Cosmos;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 
@@ -166,6 +164,18 @@ namespace ClosestPrimeWebApi.Models.StorageProvider
         public async Task<NumberEntity> GetNumberEntity(int number, int prime)
         {
             return await FindNumberEntity(number, prime).ConfigureAwait(false);
+        }
+
+        public async Task<List<NumberEntity>> GetAllNumberEntities()
+        {
+            var iterator = NumberToPrimeContainer.GetItemQueryIterator<NumberEntity>();
+            var result = new List<NumberEntity>();
+            while (iterator.HasMoreResults)
+            {
+                var items = await iterator.ReadNextAsync().ConfigureAwait(false);
+                result.AddRange(items);
+            }
+            return result;
         }
     }
 }
