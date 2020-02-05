@@ -261,4 +261,4 @@ __pycache__/
 *.pyc
 
 # ignore appsettings.json as it has secrets.
-*.appsettings.json
+appsettings.json
